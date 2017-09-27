@@ -5,7 +5,7 @@ import (
 
 	"github.com/subosito/gotenv"
 
-	"github.com/bukalapak/now-you-see-me/config"
+	"github.com/kennabila/kalamadali/config"
 )
 
 func Kalamadali() http.Handler {

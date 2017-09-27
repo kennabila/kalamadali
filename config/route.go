@@ -9,7 +9,6 @@ import (
 	"github.com/rs/cors"
 
 	"github.com/bukalapak/kalamadali/handler"
-	midd "github.com/bukalapak/now-you-see-me/middleware"
 )
 
 // NewRoute builds all routes needed in Now You See Me
@@ -32,10 +31,9 @@ func NewRoute() http.Handler {
 	router.Use(middleware.Timeout(60 * time.Second))
 	router.Use(corsConfig.Handler)
 
-	router.Route("/notif", func(r chi.Router) {
-		r.Route("/:username", func(r chi.Router) {
-			r.Get("/", midd.Monitor(handler.FVT))
-		})
+	router.Get("/", func(w http.ResponseWriter, r *http.Request) {
+		w.Write([]byte("welcome"))
+		handler.Kalamadali()
 	})
 
 	return router
