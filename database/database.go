@@ -24,7 +24,7 @@ func InitDatabase(db *sql.DB) {
    _,err = db.Exec("USE " + os.Getenv("DB_NAME"))
 	checkErr(err)
 
-   _,err = db.Exec("CREATE TABLE users ( id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, telegram varchar(50), github varchar(50) )")
+   _,err = db.Exec("CREATE TABLE users ( id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, telegram varchar(50), github varchar(50), deleted boolean )")
 	checkErr(err)
 }
 

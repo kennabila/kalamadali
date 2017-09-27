@@ -1,4 +1,4 @@
-package main
+package handler
 
 import (
 	"log"
@@ -6,7 +6,7 @@ import (
 	_ "github.com/heroku/x/hmetrics/onload"
 )
 
-func main() {
+func kalamadali() {
 	bot, err := tgbotapi.NewBotAPI("434434906:AAGFjzj-WBqTdYCueQodvfbguqjIbTL2Fow")
 	if err != nil {
 		log.Panic(err)
