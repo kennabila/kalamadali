@@ -6,8 +6,8 @@ import (
 	"strconv"
 
 	_ "github.com/heroku/x/hmetrics/onload"
-	"gopkg.in/telegram-bot-api.v4"
 	"github.com/kennabila/kalamadali/database"
+	"gopkg.in/telegram-bot-api.v4"
 )
 
 type BotWrapper struct {
@@ -27,7 +27,7 @@ func NewBotWrapper(db *database.Database) *BotWrapper {
 
 	botWrapper := &BotWrapper{
 		Bot: bot,
-		DB: db,
+		DB:  db,
 	}
 
 	return botWrapper

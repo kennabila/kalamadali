@@ -21,10 +21,7 @@ func NewDatabase() *Database {
 }
 
 func (db *Database) Insert(telegram_id string, github_id string) {
-	_, err := db.Database.Exec("INSERT INTO users (telegram_id, github_id, deleted) VALUES ('"+ telegram_id + "', '"+ github_id +"', 0)")
-	fmt.Println()
-	fmt.Println()
-	fmt.Println(err)
+	_, err := db.Database.Exec("INSERT INTO users (telegram_id, github_id, deleted) VALUES ('" + telegram_id + "', '" + github_id + "', 0)")
 
 	checkErr(err)
 }

@@ -6,14 +6,13 @@ import (
 	"github.com/subosito/gotenv"
 
 	"github.com/kennabila/kalamadali/config"
-	"github.com/kennabila/kalamadali/handler"
 	"github.com/kennabila/kalamadali/database"
+	"github.com/kennabila/kalamadali/handler"
 )
 
 type Kalamadali struct {
 	Bot    *handler.BotWrapper
 	Router http.Handler
-	DB	   *database.Database
 }
 
 func NewKalamadali() *Kalamadali {
