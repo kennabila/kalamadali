@@ -1,4 +1,3 @@
-
 package handler
 
 import (
@@ -7,9 +6,8 @@ import (
 	"log"
 )
 
-
 type BotWrapper struct {
-	Bot  *tgbotapi.BotAPI
+	Bot *tgbotapi.BotAPI
 }
 
 func NewBotWrapper() *BotWrapper {
@@ -44,7 +42,7 @@ func (b *BotWrapper) Listen() {
 		log.Printf("[%s] %s", update.Message.From.UserName, update.Message.Text)
 
 		if update.Message.Text == "/start" {
-			msg = tgbotapi.NewMessage(update.Message.Chat.ID, "Salam kenal Kakak " + update.Message.From.UserName + ", aku Kala. Silakan tunggu notifikasi nya yah!")
+			msg = tgbotapi.NewMessage(update.Message.Chat.ID, "Salam kenal Kakak "+update.Message.From.UserName+", aku Kala. Silakan tunggu notifikasi nya yah!")
 			msg.ReplyToMessageID = update.Message.MessageID
 		}
 
@@ -57,4 +55,3 @@ func (b *BotWrapper) SendNotification() {
 
 	b.Bot.Send(msg)
 }
-
