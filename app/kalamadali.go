@@ -10,14 +10,14 @@ import (
 )
 
 type Kalamadali struct {
-	Bot     int
+	Bot     *handler.BotWrapper
 	Router  http.Handler
 }
 
 func NewKalamadali() *Kalamadali {
 	gotenv.Load()
 
-	bot := config.NewBot()
+	bot := handler.NewBotWrapper()
 	router := config.NewRoute(bot)
 
 	kalamadali := &Kalamadali{

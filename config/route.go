@@ -14,7 +14,7 @@ import (
 // NewRoute builds all routes needed in Now You See Me
 // it also handles CORS configuration
 // it is a niladic function that return http.Handler
-func NewRoute(b *handler.Bot) http.Handler {
+func NewRoute(b *handler.BotWrapper) http.Handler {
 	router := chi.NewRouter()
 
 	corsConfig := cors.New(cors.Options{
