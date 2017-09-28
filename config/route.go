@@ -31,7 +31,7 @@ func NewRoute(b *handler.BotWrapper) http.Handler {
 	router.Use(middleware.Timeout(60 * time.Second))
 	router.Use(corsConfig.Handler)
 
-	router.Get("/notification", func(w http.ResponseWriter, r *http.Request) {
+	router.Post("/notification", func(w http.ResponseWriter, r *http.Request) {
 		w.Write([]byte("welcome"))
 		b.SendNotification()
 	})
