@@ -7,17 +7,20 @@ import (
 
 	"github.com/kennabila/kalamadali/config"
 	"github.com/kennabila/kalamadali/handler"
+	"github.com/kennabila/kalamadali/database"
 )
 
 type Kalamadali struct {
 	Bot    *handler.BotWrapper
 	Router http.Handler
+	DB	   *database.Database
 }
 
 func NewKalamadali() *Kalamadali {
 	gotenv.Load()
 
-	bot := handler.NewBotWrapper()
+	db := database.NewDatabase()
+	bot := handler.NewBotWrapper(db)
 	router := config.NewRoute(bot)
 
 	kalamadali := &Kalamadali{
