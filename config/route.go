@@ -8,13 +8,13 @@ import (
 	"github.com/pressly/chi/middleware"
 	"github.com/rs/cors"
 
-	"github.com/bukalapak/kalamadali/handler"
+	"github.com/kennabila/kalamadali/handler"
 )
 
 // NewRoute builds all routes needed in Now You See Me
 // it also handles CORS configuration
 // it is a niladic function that return http.Handler
-func NewRoute() http.Handler {
+func NewRoute(b *handler.Bot) http.Handler {
 	router := chi.NewRouter()
 
 	corsConfig := cors.New(cors.Options{
@@ -31,9 +31,9 @@ func NewRoute() http.Handler {
 	router.Use(middleware.Timeout(60 * time.Second))
 	router.Use(corsConfig.Handler)
 
-	router.Get("/", func(w http.ResponseWriter, r *http.Request) {
+	router.Get("/notification", func(w http.ResponseWriter, r *http.Request) {
 		w.Write([]byte("welcome"))
-		handler.Kalamadali()
+		b.SendNotification()
 	})
 
 	return router

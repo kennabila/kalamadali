@@ -9,6 +9,8 @@ import (
 
 func main() {
 	kalamadali := app.Kalamadali()
+	kalamadali.Bot.Listen()
+
 	log.Println("kalamadali is ready to listen at port 1610")
-	http.ListenAndServe(":1610", kalamadali)
+	http.ListenAndServe(":1610", kalamadali.Router)
 }

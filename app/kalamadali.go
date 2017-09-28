@@ -6,12 +6,24 @@ import (
 	"github.com/subosito/gotenv"
 
 	"github.com/kennabila/kalamadali/config"
+	"github.com/kennabila/kalamadali/handler"
 )
 
-func Kalamadali() http.Handler {
+type Kalamadali struct {
+	Bot     int
+	Router  http.Handler
+}
+
+func NewKalamadali() *Kalamadali {
 	gotenv.Load()
 
-	route := config.NewRoute()
+	bot := config.NewBot()
+	router := config.NewRoute(bot)
 
-	return route
+	kalamadali := &Kalamadali{
+		Bot: bot,
+		Router: router,
+	}
+
+	return kalamadali
 }
