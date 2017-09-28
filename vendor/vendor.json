@@ -3,6 +3,18 @@
 	"ignore": "test",
 	"package": [
 		{
+			"checksumSHA1": "Eg449rulPIiIoW2+Aoum/Af/wiM=",
+			"path": "github.com/go-chi/chi",
+			"revision": "25354a53cca531cb2efd3f1d3c565d90ff04d802",
+			"revisionTime": "2017-08-02T21:27:05Z"
+		},
+		{
+			"checksumSHA1": "TYcDSEYn/Fj7Bx6TD7j+bx6zNfc=",
+			"path": "github.com/go-sql-driver/mysql",
+			"revision": "1548d61ac1b48a30add201183a992009bc02af20",
+			"revisionTime": "2017-09-15T05:15:32Z"
+		},
+		{
 			"checksumSHA1": "bUL6tlQR8A8uyEH92w2V4n+42JU=",
 			"path": "github.com/heroku/x/hmetrics",
 			"revision": "d1e40fbd8b04f67f2c88271e4dd1e613becfba02",
@@ -13,6 +25,30 @@
 			"path": "github.com/heroku/x/hmetrics/onload",
 			"revision": "d1e40fbd8b04f67f2c88271e4dd1e613becfba02",
 			"revisionTime": "2017-08-14T23:17:16Z"
+		},
+		{
+			"checksumSHA1": "uE4XgzR6MAtdQyNQt5pkJkMXfg8=",
+			"path": "github.com/pressly/chi",
+			"revision": "25354a53cca531cb2efd3f1d3c565d90ff04d802",
+			"revisionTime": "2017-08-02T21:27:05Z"
+		},
+		{
+			"checksumSHA1": "boGGbdwyUFUNj+LboexIJ8LeaUI=",
+			"path": "github.com/pressly/chi/middleware",
+			"revision": "25354a53cca531cb2efd3f1d3c565d90ff04d802",
+			"revisionTime": "2017-08-02T21:27:05Z"
+		},
+		{
+			"checksumSHA1": "I778b2sbNN/yjwKSdb3y7hz2yUQ=",
+			"path": "github.com/rs/cors",
+			"revision": "eabcc6af4bbe5ad3a949d36450326a2b0b9894b8",
+			"revisionTime": "2017-08-01T07:32:01Z"
+		},
+		{
+			"checksumSHA1": "TroUrCnO7mVi4ZB+I5t4gXJZdE0=",
+			"path": "github.com/subosito/gotenv",
+			"revision": "009e1f9581dc712aba5682a279dee155ca3eeded",
+			"revisionTime": "2017-01-20T14:09:13Z"
 		},
 		{
 			"checksumSHA1": "t8jzPFIv4DNACv+cuZoigNmjPLQ=",
