@@ -1,11 +1,11 @@
 package database
 
 import (
-	"database/sql"
-	_ "github.com/go-sql-driver/mysql"
 	"os"
+	"database/sql"
 
-	"fmt"
+	_ "github.com/go-sql-driver/mysql"
+	//"github.com/kennabila/kalamadali/entity"
 )
 
 type Database struct {
@@ -21,13 +21,44 @@ func NewDatabase() *Database {
 }
 
 func (db *Database) Insert(telegram_id string, github_id string) {
-	_, err := db.Database.Exec("INSERT INTO users (telegram_id, github_id, deleted) VALUES ('" + telegram_id + "', '" + github_id + "', 0)")
+	id := ""
+	err := db.Database.QueryRow("SELECT telegram_id from users where telegram_id=?", telegram_id).Scan(&id)
+
+	if err != nil {
+		_, err = db.Database.Exec("INSERT INTO users (telegram_id, github_id, deleted) VALUES ('" + telegram_id + "', '" + github_id + "', 0)")
+	} else {
+		_, err = db.Database.Exec("UPDATE users SET github_id=?, deleted=? where telegram_id=?", github_id, 0, telegram_id)
+	}
+
+	//user := &entity.User{
+	//	TelegramId: telegram_id,
+	//	GithubId: github,
+	//	Deleted: 0,
+	//}
 
 	checkErr(err)
 }
 
-func (db *Database) Delete(telegram_id string, github_id string) {
+func (db *Database) Delete(telegram_id string) {
+	_, _ = db.Database.Exec("UPDATE users SET deleted=? where telegram_id=?", 1, telegram_id)
+}
 
+func (db *Database) Update(telegram_id string, github_id string) string {
+	var id, deleted string
+	err := db.Database.QueryRow("SELECT telegram_id, deleted from users where telegram_id=?", telegram_id).Scan(&id, &deleted)
+
+	if err != nil {
+		return "not_found"
+	} else {
+		if deleted == "1" {
+			return "deleted"
+		} else {
+			_, err = db.Database.Exec("UPDATE users SET github_id=? where telegram_id=?", github_id, telegram_id)
+			checkErr(err)
+		}
+	}
+
+	return "succeed"
 }
 
 func initDatabase(db *sql.DB) {
