@@ -8,6 +8,7 @@ var happy_photos = [...]string{
 									}
 
 var sad_photos = [...]string{
-										"AgADBQADAqgxG7GPcFem5FRuheh_idMXzDIABN56cPHDl1Pj9XADAAEC",
-										"AgADBQADA6gxG7GPcFdG0u4YCE1GH9InzDIABHgY8Ht1_ERiCWoDAAEC",
+										"AgADBQADA6gxG7GPcFdG0u4YCE1GH9InzDIABO0clTccq3OeBmoDAAEC", //sad
+										"AgADBQADAqgxG7GPcFem5FRuheh_idMXzDIABLgYU3KUqrXQ8nADAAEC", //maaf
+										"AgADBQADAqgxG7GPcFem5FRuheh_idMXzDIABLgYU3KUqrXQ8nADAAEC", //maaf
 									}

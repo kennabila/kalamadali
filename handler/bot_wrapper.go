@@ -65,13 +65,13 @@ func (b *BotWrapper) Start(u tgbotapi.Update) {
 	var msg tgbotapi.MessageConfig
 	var photo tgbotapi.PhotoConfig
 
-	msg = tgbotapi.NewMessage(u.Message.Chat.ID, "Salam kenal Kakak " + u.Message.From.FirstName + ", aku Kala. Silakan tunggu notifikasi nya yah!")
+	msg = tgbotapi.NewMessage(u.Message.Chat.ID, "Salam kenal Kakak " + u.Message.From.FirstName + ", aku Kala. Jangan lupa update username github Kakak ya dengan cara ketik /update_github <username_github>. Kemudian tunggu notifikasinya yah!")
 	msg.ReplyToMessageID = u.Message.MessageID
-	b.DB.Insert(strconv.Itoa(u.Message.From.ID), "kennabila")
+	b.DB.Insert(strconv.Itoa(u.Message.From.ID), "<not_set>")
 	photo = tgbotapi.NewPhotoShare(u.Message.Chat.ID, happy_photos[rand.Intn(len(happy_photos)-1)])
 
-	b.Bot.Send(msg)
 	b.Bot.Send(photo)
+	b.Bot.Send(msg)
 }
 
 
@@ -99,12 +99,12 @@ func (b *BotWrapper) UpdateGithub(u tgbotapi.Update) {
 	if IsValidGithubId(github_id) {
 		status := b.DB.Update(strconv.Itoa(u.Message.From.ID), github_id)
 		if status == "succeed" {
-			msg = tgbotapi.NewMessage(u.Message.Chat.ID, "Berhasil update username github-mu")
+			msg = tgbotapi.NewMessage(u.Message.Chat.ID, "Berhasil update username github kakak! Tunggu notifikasi dari Kala ya!")
 		} else {
-			msg = tgbotapi.NewMessage(u.Message.Chat.ID, "Tidak bisa update username github, ketik /start untuk memulai")
+			msg = tgbotapi.NewMessage(u.Message.Chat.ID, "Kala gak bisa update username github kakak, ketik /start untuk memulai terlebih dahulu :(")
 		}
 	} else {
-		msg = tgbotapi.NewMessage(u.Message.Chat.ID, "Username github-mu tidak valid, ganti username github dengan mengetikkan /update_github <username_github_mu>")
+		msg = tgbotapi.NewMessage(u.Message.Chat.ID, "Username github Kakak gak valid, ganti username github dengan mengetikkan /update_github <username_github>")
 	}
 	msg.ReplyToMessageID = u.Message.MessageID
 
