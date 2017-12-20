@@ -8,7 +8,6 @@ import (
 	"regexp"
   "math/rand"
 
-	_ "github.com/heroku/x/hmetrics/onload"
 	"github.com/kennabila/kalamadali/database"
 	"gopkg.in/telegram-bot-api.v4"
 )
